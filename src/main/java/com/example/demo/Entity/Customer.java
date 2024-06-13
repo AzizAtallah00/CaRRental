@@ -2,9 +2,11 @@ package com.example.demo.Entity;
 
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
@@ -14,7 +16,8 @@ public class Customer extends User{
     @Column(nullable = false)
     private String phone ;
     //relations 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Booking> bookings;
     
 }

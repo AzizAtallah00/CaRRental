@@ -28,6 +28,9 @@ public class Booking extends BaseEntity{
     @NotBlank
     @Column (nullable=false)
     private String pickupPlace;
+    @NotBlank
+    @Column (nullable=false)
+    private String dropOffPlace;
     //Relations
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Car car;

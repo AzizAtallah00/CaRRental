@@ -17,17 +17,17 @@ public class Payment  {
 
     @Id
     private long id;
-    private float totalAmount;
+    private float rentalPrice;
     private float taxAndFees ;
+    @NotBlank
+    @Column (nullable=false)
+    private float guaranteePrice ;
     @NotBlank
     @Column (nullable=false)
     private LocalDateTime paymentDate;
     @NotBlank
     @Column (nullable=false)
     private PaymentMethod paymentMethod;
-    @NotBlank
-    @Column (nullable=false)
-    private float garantee ;
     //relations
     @MapsId
     @OneToOne(optional = false)
