@@ -20,10 +20,9 @@ public class Agent extends User{
     private String agencyName;
     @NotBlank
     @Column(nullable = false)
-    private String agencyAdress ;
+    private String agencyAddress ;
     @OneToMany(mappedBy = "agent")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Car> cars;
-
-    
+   
 }
