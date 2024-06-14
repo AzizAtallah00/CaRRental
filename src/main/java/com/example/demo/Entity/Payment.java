@@ -6,6 +6,8 @@ import com.example.demo.Enum.PaymentMethod;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -27,6 +29,7 @@ public class Payment  {
     private LocalDateTime paymentDate;
     @NotBlank
     @Column (nullable=false)
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
     //relations
     @MapsId

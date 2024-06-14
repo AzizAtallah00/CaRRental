@@ -16,5 +16,4 @@ public class PaymentMapper {
 		return modelMapper.map(paymentDTO, PaymentMapper.class);
 	}
     
-    
 }

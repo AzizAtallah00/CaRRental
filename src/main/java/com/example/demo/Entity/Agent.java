@@ -13,10 +13,10 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class Agent extends User{
     @NotBlank
-    @Column(nullable = false)
+    @Column(nullable = false )
     private String phone ;
     @NotBlank
-    @Column(nullable = false)
+    @Column(nullable = false , unique = true)
     private String agencyName;
     @NotBlank
     @Column(nullable = false)
