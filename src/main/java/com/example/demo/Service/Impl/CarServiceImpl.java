@@ -8,6 +8,7 @@ import com.example.demo.DTO.BookingDTO;
 import com.example.demo.DTO.CarDTO;
 import com.example.demo.Entity.Booking;
 import com.example.demo.Entity.Car;
+import com.example.demo.Entity.Customer;
 import com.example.demo.Enum.CarType;
 import com.example.demo.Enum.FuelType;
 import com.example.demo.Enum.TransmissionType;
@@ -15,6 +16,7 @@ import com.example.demo.Mapper.BookingMapper;
 import com.example.demo.Mapper.CarMapper;
 import com.example.demo.Repository.BookingRepository;
 import com.example.demo.Repository.CarRepository;
+import com.example.demo.Repository.CustomerRepository;
 import com.example.demo.Service.CarService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,8 @@ public class CarServiceImpl implements CarService{
   
     private final CarRepository carRepository;
     private final BookingRepository bookingRepository;
+    private final CustomerRepository customerRepository;
+
     @Override
     public Page<CarDTO> getByModel(String model, Pageable pageable) {
         Page <Car> cars = carRepository.findByModelContaining(model, pageable);
@@ -79,10 +83,12 @@ public class CarServiceImpl implements CarService{
     }
 
     @Override
-    public CarDTO assignBookingToCar(long id, BookingDTO booking) {
+    public CarDTO assignBookingToCar(long id, BookingDTO booking , long customerid) {
         Car car = carRepository.findById(id).get();
+        Customer customer = customerRepository.findById(customerid).get();
         Booking booking1 = BookingMapper.convertToEntity(booking);
         booking1.setCar(car);
+        booking1.setCustomer(customer);
         bookingRepository.save (booking1);
         return CarMapper.convertToDto(car);
     }

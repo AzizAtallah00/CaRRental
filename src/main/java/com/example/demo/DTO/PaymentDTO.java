@@ -8,8 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
+import lombok.Getter;
+import lombok.Setter;
 
-public class PaymentDTO extends UserDTO{
+@Getter
+@Setter
+public class PaymentDTO {
     
     @Positive
     private float rentalPrice;

@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 import com.example.demo.Enum.PaymentMethod;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,23 +12,31 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-public class Payment  {
+@Getter
+@Setter
+public class Payment {
 
     @Id
     private long id;
     private float rentalPrice;
     private float taxAndFees ;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     private float guaranteePrice ;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     private LocalDateTime paymentDate;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
     @Enumerated(EnumType.STRING)
+    @NotNull
     private PaymentMethod paymentMethod;
     //relations
     @MapsId

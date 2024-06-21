@@ -7,15 +7,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class AgentDTO extends UserDTO{
     
     @NotBlank
+    @NotNull
     private String phone ;
     @NotBlank
+    @NotNull
     private String agencyName;
     @NotBlank
-    private String agencyAdress ;
+    @NotNull
+    private String agencyAddress ;
     @JsonIgnoreProperties("agent")
-    private List<Car> cars;
+    private List<CarDTO> cars;
 }

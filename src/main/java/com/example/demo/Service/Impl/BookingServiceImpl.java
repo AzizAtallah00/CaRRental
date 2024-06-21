@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.example.demo.DTO.BookingDTO;
 import com.example.demo.DTO.PaymentDTO;
 import com.example.demo.Entity.Booking;
+import com.example.demo.Entity.Payment;
 import com.example.demo.Mapper.BookingMapper;
 import com.example.demo.Mapper.PaymentMapper;
 import com.example.demo.Repository.BookingRepository;
+import com.example.demo.Repository.PaymentRepository;
 import com.example.demo.Service.BookingService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 public class BookingServiceImpl implements BookingService{
 
     private final BookingRepository bookingRepository;
+    private final PaymentRepository paymentRepository;
 
     @Override
     public Page<BookingDTO> getAllBookings (Pageable pageable) {
@@ -59,8 +62,10 @@ public class BookingServiceImpl implements BookingService{
         Booking booking = bookingRepository.findById(id).orElse(null);
         if (booking == null) return null;
         else{
-            // Payment paymentEntity = PaymentMapper.convertToEntity(payment);
-            booking.setPayment(PaymentMapper.convertToEntity(payment));
+            Payment paymentEntity = PaymentMapper.convertToEntity(payment);
+            paymentEntity.setBooking(booking);
+            paymentRepository.save(paymentEntity);
+            booking.setPayment(paymentEntity);
             bookingRepository.save(booking);
             return BookingMapper.convertToDto(booking);
         }

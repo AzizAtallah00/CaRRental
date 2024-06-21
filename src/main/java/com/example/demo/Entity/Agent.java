@@ -9,21 +9,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
+@ToString
 public class Agent extends User{
     @NotBlank
-    @Column(nullable = false )
+    @NotNull
+    // @Column(nullable = false )
     private String phone ;
     @NotBlank
-    @Column(nullable = false , unique = true)
+    @NotNull
+    @Column( unique = true )
     private String agencyName;
     @NotBlank
-    @Column(nullable = false)
+    @NotNull
+    // @Column(nullable = false )
     private String agencyAddress ;
     @OneToMany(mappedBy = "agent")
     @OnDelete(action = OnDeleteAction.CASCADE)

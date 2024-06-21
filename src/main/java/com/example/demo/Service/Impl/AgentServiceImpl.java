@@ -55,10 +55,21 @@ public class AgentServiceImpl implements AgentService{
         }    
     }
 
+    private boolean isAgentDTOInvalid(AgentDTO agent) {
+        return agent.getEmail() == null ;
+    }
+
     @Override
     public AgentDTO addAgent(AgentDTO agent) {
-        Agent agent1 = AgentMapper.convertToEntity(agent);
-        return AgentMapper.convertToDto (agentRepository.save(agent1));
+        if (agent == null || isAgentDTOInvalid(agent))
+        // if (agent == null )
+            throw new IllegalArgumentException("agent cannot be null !!!!");
+        else{
+
+            System.out.println(agent.getAgencyAddress() +"  "+ agent.getAgencyName() +"  "+ agent.getEmail() +"  "+ agent.getPhone() +"  "+ agent.getPassword() );
+            Agent agent1 = AgentMapper.convertToEntity(agent);
+            return AgentMapper.convertToDto (agentRepository.save(agent1));
+        }
     }
 
     @Override
@@ -73,6 +84,8 @@ public class AgentServiceImpl implements AgentService{
             return null;
         else
         {
+            System.out.println("1 2 test 1 2 test");
+            // System.out.println (car.get)
             Car car1 = CarMapper.convertToEntity(car);
             car1.setAgent(agent);
             carRepository.save(car1);

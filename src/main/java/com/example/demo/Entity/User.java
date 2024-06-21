@@ -5,17 +5,25 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Email; 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
+@Getter
+@Setter
 public class User extends BaseEntity {
 
     @Email
-    @Column(unique = true, nullable = false)
+    @NotNull
+    @Column(unique = true)
     private String email;
     @NotBlank
-    @Column (nullable=false)
+    @NotNull
+    // @Column (nullable=false)
     private String password;
     @NotBlank
+    @NotNull
     private String roles;
     
 }

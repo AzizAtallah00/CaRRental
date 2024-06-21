@@ -19,6 +19,6 @@ public interface CarService {
     public Page<CarDTO> getByFuelType (FuelType fuelType, Pageable pageable);
     public Page <CarDTO> getByPricePerDayBetween (float min, float max, Pageable pageable);
     public void deleteCar (long id);
-    public CarDTO assignBookingToCar (long id , BookingDTO booking);
+    public CarDTO assignBookingToCar (long id , BookingDTO booking , long customerid);
     
 }

@@ -17,6 +17,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,25 +26,31 @@ import lombok.Setter;
 @Setter
 public class Car extends BaseEntity {
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     private String model;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     @Enumerated(EnumType.STRING)
     private CarType type;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     private int capacity;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TransmissionType transmission; 
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     @Enumerated(EnumType.STRING)
     private FuelType fuelType;
     @NotBlank
-    @Column (nullable=false)
+    // @Column (nullable=false)
+    @NotNull
     private float pricePerDay;
     //Relations
     @ManyToOne (optional = false , fetch = FetchType.EAGER)
