@@ -16,8 +16,10 @@ import com.example.demo.DTO.BookingDTO;
 import com.example.demo.DTO.PaymentDTO;
 import com.example.demo.Service.BookingService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
+@Tag(name = "Booking", description = "Booking Api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/booking")

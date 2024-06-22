@@ -17,8 +17,10 @@ import com.example.demo.Enum.FuelType;
 import com.example.demo.Enum.TransmissionType;
 import com.example.demo.Service.CarService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
+@Tag(name = "Car", description = "Car Api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/car")

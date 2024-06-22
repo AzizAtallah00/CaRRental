@@ -8,7 +8,7 @@ import com.example.demo.DTO.AgentDTO;
 import com.example.demo.DTO.CarDTO;
 import com.example.demo.Service.AgentService;
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.data.domain.Page;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+@Tag(name = "Agent", description = " Agent Api")
 @RestController
 @RequestMapping("/agent")
 @RequiredArgsConstructor

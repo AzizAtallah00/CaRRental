@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.DTO.CustomerDTO;
 import com.example.demo.Service.CustomerService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
+
+@Tag(name = "Customer", description = "Customer Api")
 @RestController
 @RequestMapping("/customer")
 @RequiredArgsConstructor
